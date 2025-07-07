@@ -1,0 +1,501 @@
+<ApodWindow>:
+
+<AstroDashboard>:
+    FloatLayout:
+        Image:
+            id: background
+            source: 'images/background.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: (1, 1)
+            pos_hint: {"x": 0, "y": 0}
+            
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 5
+            spacing: 5
+            size_hint: (1, 1)
+            pos_hint: {"x": 0, "y": 0}
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 5
+                spacing: 0
+                size_hint: (1, 0.5)
+                pos_hint: {"x": 0, "y": 0}
+
+                Label:
+                    id: time_label
+                    font_size: '75sp'
+                    bold: False
+                    font_name: "RiosarkRegular-ZpgLB.otf"
+                    size_hint_y: 1
+                    height: self.texture_size[1]
+                    halign: "left"
+                    pos_hint: {"Top": 1}
+                    background_color: (0.17, 0.17, 0.17, 0.75)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [20,0,0,20]
+
+                Label: 
+                    id: date_label
+                    font_size: '40sp'
+                    bold: False
+                    font_name: "RiosarkRegular-ZpgLB.otf"
+                    size_hint_y: 1
+                    height: self.texture_size[1]
+                    halign: "left"
+                    pos_hint: {"Top": 1}
+                    background_color: (0.17, 0.17, 0.17, 0.75)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [0,20,20,0]
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding:5
+                spacing: 10
+                size_hint: (1, 1)
+                pos_hint: {"x": 0, "y": 0}
+                
+                BoxLayout:
+                    orientation: "vertical"
+                    padding: 0
+                    spacing: 10
+                    size_hint: (1, 1)
+                    pos_hint: {"x": 0, "y": 0}
+
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        padding: 1.25
+                        spacing: 0
+                        size_hint: (1, 1)
+                        pos_hint: {"x": 0, "y": 0}
+
+
+                        BoxLayout:
+                            id: moonphase
+                            pos_hint: {"x":0, "y": 0}
+                            background_color: (0.17, 0.17, 0.17, 0.75)
+                            canvas.before:
+                                Color:
+                                    rgba: self.background_color
+                                RoundedRectangle:
+                                    size: self.size
+                                    pos: self.pos
+                                    radius: [20]
+
+                        BoxLayout:
+                            id: moonimage
+                            orientation: 'vertical'
+                            size_hint: (1, 1)
+                            pos_hint: {"x": 0, "y": 0}
+                        
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        padding: 1.25
+                        spacing: 10
+                        size_hint: (1, 1)
+                        pos_hint: {"x": 0, "y": 0}
+
+                        Button:
+                            size_hint_x: 0.5
+                            pos_hint: {"right": 1}
+                            on_press: app.root.current = "ApodWindow"
+
+                            
+                            background_color: (0,0,0,0)
+
+                            canvas.before:
+                                Color:
+                                    rgba: 1,1,1,1
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                                    radius: [20]
+                                    source: "images/apod-logo.jpg"
+  
+
+                        RoundedButton:
+                            size_hint_x : 0.5
+                            pos_hint: {"right": 1}
+                            on_press: app.root.current = "OptionsWindow"
+
+                            Image:
+                                source: "images/more.png"
+                                allow_stretch: False
+                                keep_ratio: True
+                                size_hint: 1,1
+                                size: 100, 100
+                                center_x: self.parent.center_x
+                                center_y: self.parent.center_y
+
+
+                ScrollView:
+                    size_hint: (1, 1)
+                    bar_width: 5
+                    size_hint_y: 1
+                    bar_margin: 15
+                    bar_color: (0,0.8,1,1)
+                    bar_inactive_color: (0,0.8,1,0.3)
+                        
+                    pos_hint: {"x":0.5, "y": 0, "left": 1}
+                    background_color: (0.17, 0.17, 0.17, 0.75)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [20]
+
+                    StackLayout:
+                        id: event_list
+                        # cols: 1
+                        spacing: 10
+                        padding: 10
+
+                        orientation: 'lr-tb'
+                        size_hint_y: None
+                        height: self.minimum_height
+
+<OptionsWindow>:
+    FloatLayout:
+        Image:
+            id: optionsbackground
+            source: 'images/background.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: (1, 1)
+            pos_hint: {"x": 0, "y": 0}
+        
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 15
+            spacing: 15
+            size_hint: (1, 1)
+            pos_hint: {"x": 0, "y": 0}
+
+            RoundedButton:
+                size_hint_y: 0.5
+                pos_hint: {"x": 0, "center_y": 0.5}
+                on_press: app.root.current = "AlarmsWindow"
+                background_color: (0,0,0,0)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                        
+
+                Image:
+                    source: "images/alarmclock.png"
+                    allow_stretch: False
+                    keep_ratio: True
+                    size_hint: 1,1
+                    size: 100, 100
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+
+            RoundedButton:
+                size_hint_y: 0.5
+                pos_hint: {"x": 0, "center_y": 0.5}
+                background_color: (0,0,0,0)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                Image:
+                    source: "images/lightbulb.png"
+                    allow_stretch: False
+                    keep_ratio: True
+                    size_hint: 1,1
+                    size: 100, 100
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+            
+            RoundedButton:
+                size_hint_y: 0.5
+                pos_hint: {"x": 0, "center_y": 0.5}
+                background_color: (0,0,0,0)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                on_press: app.root.current = "AstroDashboard"
+
+                Image:
+                    source: "images/home-white-icon (1).png"
+                    allow_stretch: False
+                    keep_ratio: True
+                    size_hint: 1,1
+                    size: 100, 100
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+            
+<AlarmsWindow>:
+    FloatLayout:
+        Image:
+            id: background
+            source: 'images/background.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: (1, 1)
+            pos_hint: {"x": 0, "y": 0}
+
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 15
+            spacing: 15
+            size_hint: (1, 1)
+            pos_hint: {"x": 0, "y": 0}
+
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 0
+                spacing: 15
+                size_hint: (1, 1)
+                pos_hint: {"x": 0, "y": 0}
+
+                Label:
+                    id: clock_label
+                    font_size: '50sp'
+                    font_name: "RiosarkRegular-ZpgLB.otf"
+                    size_hint_y: 0.15
+                    pos_hint: {"Top": 1}
+                    background_color: (0.17, 0.17, 0.17, 0.75)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [20]
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: 0
+                    spacing: 0
+                    size_hint_y: 0.7
+                    pos_hint: {"x": 0, "y": 0}
+
+                    Slider:
+                        id: hourslider
+                        min: 0
+                        max: 24
+                        step: 1 
+                        on_value: app.root.get_screen('AlarmsWindow').update_alarm_label()
+                    Label:
+                        text: "Hours"
+                        font_size: "30"
+                        font_name: "RiosarkRegular-ZpgLB.otf"
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'top'
+                    Slider:
+                        id: minuteslider
+                        min: 0
+                        max: 59
+                        step: 1
+                        on_value: app.root.get_screen('AlarmsWindow').update_alarm_label()
+                    Label:
+                        text: "Minutes"
+                        font_size: "30"
+                        font_name: "RiosarkRegular-ZpgLB.otf"
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'top'
+                    Label:
+                        id: alarm_label
+                        text: "[color=#00BDF6]Alarm Time:[/color] 00:00"
+                        font_size: '30sp'
+                        font_name: "RiosarkRegular-ZpgLB.otf"
+                        markup: True
+
+                        background_color: (0.17, 0.17, 0.17, 0.75)
+                        canvas.before:
+                            Color:
+                                rgba: self.background_color
+                            RoundedRectangle:
+                                size: self.size
+                                pos: self.pos 
+                                radius: [20]
+                
+                RoundedButton:
+                    text: "Save"
+                    font_size: '30sp'
+                    font_name: "RiosarkRegular-ZpgLB.otf"
+                    size_hint_y: 0.15
+                    pos_hint: {"Top": 1}
+                    on_press: app.root.get_screen('AlarmsWindow').save_alarm_time()
+                    background_color: (0,0,0,0)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+            
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 0
+                spacing: 15
+                size_hint: (1, 1)
+                pos_hint: {"x": 0, "y": 0}
+
+                Label:
+                    text: "My Alarms"
+                    font_size: '36sp'
+                    font_name: "RiosarkRegular-ZpgLB.otf"
+                    size_hint_y: 0.15
+                    pos_hint: {"Top": 1}
+                    background_color: (0.17, 0.17, 0.17, 0.75)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [20]
+                ScrollView:
+                    size_hint: (1, 1)
+                    bar_width: 5
+                    size_hint_y: 0.7
+
+                    background_color: (0.17, 0.17, 0.17, 0.75)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [20]
+
+                    StackLayout:
+                        id: alarm_list
+                        orientation: 'lr-tb'
+                        size_hint_y: None
+                        height: self.minimum_height
+                
+                RelativeLayout:
+                    size_hint_y: 0.15
+
+                    RoundedButton:
+                        id: home_btn
+                        font_size: '24sp'
+                        font_name: "RiosarkRegular-ZpgLB.otf"
+                        background_color: (0,0,0,0)
+                        on_press: app.root.current = "AstroDashboard"
+                        size_hint: 1, 1
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                    Image:
+                        source: "images/home-white-icon (1).png"
+                        allow_stretch: True
+                        keep_ratio: True
+                        size_hint: 0.7, 0.7
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+<AlarmRingingWindow>:
+    FloatLayout:
+        Image:
+            id: background
+            source: 'images/background.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: (1, 1)
+            pos_hint: {"x": 0, "y": 0}
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 10
+
+            Label:
+                id: clocklabel
+                font_size: '72sp'
+                font_name: "RiosarkRegular-ZpgLB.otf"
+                size_hint_y: 0.25
+                size_hint_x: 0.45
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                background_color: (0.17, 0.17, 0.17, 0.75)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+
+            Label:
+                text: "Alarm"
+                font_size: "72sp"
+                font_name: "RiosarkRegular-ZpgLB.otf"
+                size_hint_y: 0.6
+
+            
+            RoundedAlarmButton:
+                text: "Stop"
+                font_size: '36sp'
+                font_name: "RiosarkRegular-ZpgLB.otf"
+                background_color: (0, 0, 0, 0)
+                on_press: app.root.current = "AstroDashboard"
+                size_hint_y: 0.15
+                size_hint_x: 0.25
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+<RoundedButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    background_down: ''
+    radius: [20]
+
+    canvas.before:
+        Color:
+            rgba: (0.17, 0.17, 0.17, 0.75)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+    canvas.after:
+        Color:
+            rgba: 0,0.8,1,1
+        Line:
+            rounded_rectangle: (*self.pos, *self.size, 20)
+            width: 1
+
+        
+
+<RoundedAlarmButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (1, 0, 0, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+    canvas.after:
+        Color:
+            rgba: 1,1,1,1
+        Line:
+            rounded_rectangle: (*self.pos, *self.size, 20)
+            width: 1
+
+                
