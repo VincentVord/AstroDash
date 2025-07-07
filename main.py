@@ -44,7 +44,7 @@ class ApodWindow(Screen): #APOD window
         self.load_apod() 
 
     def load_apod(self): #fetch NASA APOD API
-            api_key = "fuwbgeljQZLYXyPTRZV71hovCNE5eXAOed3pRVWi"  # Replace with your own key if needed
+            api_key =   # Your API Key Here
             url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
 
             try:
@@ -230,8 +230,8 @@ class AstroDashboard(Screen): #Main clockface screen
     def load_moon_data(self):
         print("Starting moon data request...")
 
-        app_id = "151ed190-5ebf-4211-b472-5018955a9463"
-        app_secret = "67489438a73c8dc6e256c6ce112920b232ad9a45e49e4dda186efee52daea0442c1c363731e743d2bc30756dd64f9b101cd71886c7cb777b139c34a6821f320408c97a5e789b70eb064180d47d710db302f25d9709f2028e285c29221d9ad1fcbbe23617136dff0f7eef6f4717d2cd05"
+        app_id = #Your App ID here
+        app_secret = #Your App Secret here
         userpass = f"{app_id}:{app_secret}"
         auth_string = base64.b64encode(userpass.encode()).decode()
 
